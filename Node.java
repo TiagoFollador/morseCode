@@ -6,7 +6,7 @@ public class Node {
     private Node filhoDireito;
 
     public Node() {
-        this.caracter = '-';
+        this.caracter = '!';
         this.filhoEsquerdo = null;
         this.filhoDireito = null;
     }
