@@ -41,4 +41,41 @@ public class ArvoreBinariaMorse {
         node.setCaracter(Caracter);
         return node;
     }
+
+    private char parseMorseCodeToChar(char[] morseCode)
+    {
+        Node noAtual = this.raiz;
+        for (char simbolo: morseCode){
+            if (simbolo == '.'){
+                noAtual = noAtual.getFilhoEsquerdo();
+            } else if (simbolo == '_'){
+                noAtual = noAtual.getFilhoDireito();
+            }
+        }
+        System.out.println(noAtual.getCaracter());
+        return noAtual.getCaracter();
+    }
+
+    public void consulta(String completeMorseCode)
+    {
+        Node noAtual = this.raiz;
+        int comecoDoCodigoMorse = 0;
+        int fimDoCodigoMorse = 1;
+        int indexTranslated = 0;
+        completeMorseCode += " ";
+        char[] morseCodeSplitted = completeMorseCode.toCharArray();
+        char[] letter = new char[7];
+        char[] morseCodeTranslated = new char[50];
+        for(char simbolo: morseCodeSplitted){
+            if (simbolo == ' '){
+                for (int i = comecoDoCodigoMorse, j = 0; i < fimDoCodigoMorse ; i++, j++) {
+                    letter[j] = morseCodeSplitted[i];
+                }
+                morseCodeTranslated[indexTranslated] = parseMorseCodeToChar(letter);
+                indexTranslated++;
+                comecoDoCodigoMorse = fimDoCodigoMorse;
+            }
+            fimDoCodigoMorse++;
+        }
+    }
 }
