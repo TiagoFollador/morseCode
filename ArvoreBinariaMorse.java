@@ -11,28 +11,28 @@ public class ArvoreBinariaMorse {
      * Vejam o discord
      * */
     public void insert(String morse, char caracter )
-    {   Node nodeCriado = criarNode(morse, caracter);
+    {
         Node nodeAtual = this.raiz;
         char[] morseCode = morse.toCharArray();
         for (char simbolo: morseCode){
-            if (simbolo == '.'){
-                do {
-                    if (nodeAtual.getFilhoEsquerdo() == null) {
-                        nodeAtual.setFilhoEsquerdo(nodeCriado);
-                    } else {
-                        nodeAtual = nodeAtual.getFilhoEsquerdo();
-                    }
-                } while (nodeAtual != null);
-            } else if ( simbolo == '_') {
-                do {
-                    if (nodeAtual.getFilhoDireito() == null) {
-                        nodeAtual.setFilhoDireito(nodeCriado);
-                    } else {
-                        nodeAtual = nodeAtual.getFilhoDireito();
-                    }
-                } while (nodeAtual != null);
+            if (simbolo == '.'){ // caso seja ponto, adiciona a esquerda
+                if (nodeAtual.getFilhoEsquerdo() == null) {
+                    nodeAtual.setFilhoEsquerdo(new Node());
+                    nodeAtual = nodeAtual.getFilhoEsquerdo();
+                } else {
+                    nodeAtual = nodeAtual.getFilhoEsquerdo();
+                }
+            } else if ( simbolo == '_') { // caso seja traco, adiciona a direita
+                if (nodeAtual.getFilhoDireito() == null) {
+                    nodeAtual.setFilhoDireito(new Node());
+                    nodeAtual = nodeAtual.getFilhoDireito();
+                } else {
+                    nodeAtual = nodeAtual.getFilhoDireito();
+                }
             }
         }
+        nodeAtual.setCaracter(caracter);
+
     }
 
     private Node criarNode(String morse, char Caracter )
