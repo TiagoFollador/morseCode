@@ -22,6 +22,7 @@ public class Node {
     public void setFilhoDireito(Node filhoDireito) {
         this.filhoDireito = filhoDireito;
     }
+
     public char getCaracter() {
         return caracter;
     }
