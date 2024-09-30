@@ -6,6 +6,11 @@ public class UI {
 
     public UI(){
         this.ABM = new ArvoreBinariaMorse();
+        initialInsert();
+    }
+
+    // insere os dados na arvore binaria
+    private void initialInsert(){
         this.ABM.insert("._", 'A');
         this.ABM.insert("_...", 'B');
         this.ABM.insert("_._.", 'C');
@@ -45,15 +50,18 @@ public class UI {
         this.ABM.insert("____.", '9');
     }
 
+    // metodo em que executamos o app
     public boolean app(){
         showOptions();
         return chooseBetweenOpitions(choosingOption());
     }
 
+    // exibe as opcoes
     private void showOptions(){
         System.out.println("[1] - Realizar uma consulta \n[2] - Exibir a árvore \n[3] - Sair");
     }
 
+    // metodo para selecionar uma opcao
     private boolean chooseBetweenOpitions(int choosedOption){
         switch (choosedOption){
             case 1:
@@ -71,6 +79,7 @@ public class UI {
         }
     }
 
+    // metodo para realizar o input da opcao
     private int choosingOption(){
         Scanner teclado = new Scanner(System.in);
         int option;
@@ -85,10 +94,12 @@ public class UI {
         }
     }
 
+    // mensagem caso ocorra algum erro
     private void errorMensage(){
         System.out.println("Parece que ocorreu algo errado, tente novamente!");
     }
 
+    // metodo que realiza e exibe a consulta do codigo morse
     private void realizarConsulta(){
         Scanner teclado = new Scanner(System.in);
         String palavra = "";
@@ -107,11 +118,13 @@ public class UI {
         }
     }
 
+    // metodo que exibe a arvore binaria
     public void exibirArvore(){
         System.out.println("0   1   2   3   4   5");
         ABM.exibirArvore();
     }
 
+    // metodo com mensagem de despedida
     private void adeus(){
         System.out.println("Obrigado por utilizar nosso aplicativo!!");
         System.out.println("Feito por: \n --- Luiz Mathias Rivabem Filho --- \n >>> Rafaela Vecchi <<< \n === Tiago de Brito Follador === ");
